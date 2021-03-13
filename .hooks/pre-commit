@@ -1,0 +1,7 @@
+#!/bin/sh
+result=$(pylint *)
+mark=$(echo $result | sed -n 's/.* rated at -\([^/]*\).*/\1/p')
+if echo "$mark < 9" | bc -l
+then
+	exit 1
+fi
